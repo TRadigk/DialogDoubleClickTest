@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "DialogDoubleClickTest (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "DialogDoubleClickTest (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}
