@@ -16,7 +16,7 @@
         <ContentDialog Name="ContentDialog">
             
 
-            <ListView SelectionMode="Single" >
+            <ListView SelectionMode="Extended" >
                 <ListViewItem Tapped="UIElement_OnTapped" DoubleTapped="UIElement_OnDoubleTapped">
                     <StackPanel Orientation="Horizontal">
                         <SymbolIcon Symbol="Account" Margin="10,0"/>

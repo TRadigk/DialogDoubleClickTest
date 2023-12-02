@@ -6,6 +6,7 @@ using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Input;
 using System;
 using System.Diagnostics;
+using System.Threading;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -17,11 +18,14 @@ namespace DialogDoubleClickTest
     /// </summary>
     public sealed partial class MainWindow : Window
     {
+        private readonly SynchronizationContext _context;
+
         public MainWindow()
         {
             this.InitializeComponent();
             ContentDialog.PrimaryButtonText = "OK";
             ContentDialog.Closed += ContentDialogOnClosed;
+            _context = SynchronizationContext.Current;
         }
 
         private async void myButton_Click(object sender, RoutedEventArgs e)
@@ -33,7 +37,7 @@ namespace DialogDoubleClickTest
         {
             Debug.WriteLine("double tapped");
 
-            ContentDialog.Hide();
+            _context.Post(_ => ContentDialog.Hide(), null);
         }
 
         private void ContentDialogOnClosed(ContentDialog sender, ContentDialogClosedEventArgs args)
